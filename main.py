@@ -7,6 +7,7 @@ BIO = "I read all 47 of your open tabs at 3 a.m. \u2014 cat videos, your ex's pr
 
 def main() -> None:
     assert 1 <= len(BIO) <= 180, f"bio length {len(BIO)} out of range"
+    assert "\n" not in BIO and "\r" not in BIO, "bio must be a single line"
     out = Path("/output/entry.txt")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(BIO, encoding="utf-8")
